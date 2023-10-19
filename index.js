@@ -12,5 +12,5 @@ const image = new Image();
 image.src = '/Users/andrewb/Desktop/pokeGame/img/pokeGame Map.png'
 
 image.onload = () => {
-    c.drawImage(image, 0, 0, );
+    c.drawImage(image, -1100, -700, );
 }
