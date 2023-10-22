@@ -15,25 +15,42 @@ const playerImage = new Image();
 playerImage.src = '/Users/andrewb/Desktop/pokeGame/img/playerDown.png';
 
 //placing and centering player on loaded center screen
-image.onload = () => {
-    c.drawImage(image, -1100, -700, );
-    c.drawImage(
-        playerImage,
-        0,
-        0,
-        playerImage.width / 4,
-        playerImage.height,
-    canvas.width / 2 - (playerImage.width / 4) / 2, 
-    canvas.height / 2 - playerImage.height / 2,
-    playerImage.width / 4,
-    playerImage.height
-    );
+class Sprite {
+    constructor({position, velocity, image}){
+        this.position = position,
+        this.image = image
+    }
+    draw() {
+        c.drawImage(this.image, -1100, -700, );
+    }
 }
 
+const background = new Sprite({
+    position: {
+        x: -1100, 
+        y: -700
+        },
+    image: image
+    })
 //player movement
+const keys = {
+    w: {
+        pressed: false,
+    },
+    a: {
+        pressed: false,
+    },
+    s: {
+        pressed: false,
+    },
+    d: {
+        pressed: false,
+    }
+}
+
 function animate() {
     window.requestAnimationFrame(animate);
-    c.drawImage(image, -1100, -700, );
+    background.draw();
     c.drawImage(
         playerImage,
         0,
@@ -53,16 +70,16 @@ animate();
 window.addEventListener('keydown', (e) => {
     switch(e.key) {
         case 'w':
-            console.log("w")
+            keys.w.pressed = true;
             break;
         case 'a':
-            console.log("a")
+            keys.a.pressed = true;
             break;
         case 'd':
-            console.log("d")
+            keys.d.pressed = true;
             break;
         case 's':
-            console.log("s")
+            keys.s.pressed = true;
             break;
     }
 })
